@@ -1,5 +1,8 @@
 package com.ao.weightconverter
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -33,19 +36,27 @@ class MainActivity : AppCompatActivity() {
         var btnConvert:Button = findViewById<Button>(R.id.btnConvert)
         var rdbConvertionGroup : RadioGroup = findViewById<RadioGroup>(R.id.rdbConvertionGroup)
         var txtWeightInput : EditText = findViewById<EditText>(R.id.txtWeightInput)
+        var txtResult : TextView = findViewById<TextView>(R.id.txtResult)
+        var LsResult = ""
+        var weightResult = 0.0
 
         btnConvert.setOnClickListener(View.OnClickListener {
             when(rdbConvertionGroup.checkedRadioButtonId){
                 R.id.kp -> {
-                    var weightResult = Integer.parseInt(txtWeightInput.text.toString()) * 2.20462262185
-                    Toast.makeText(this, "Pounds: " + weightResult, Toast.LENGTH_SHORT).show()
+                    weightResult = Integer.parseInt(txtWeightInput.text.toString()) * 2.20462262185
+                    LsResult = "Pounds: " + weightResult.toString()
                 }
                 R.id.pk -> {
-                    var weightResult = Integer.parseInt(txtWeightInput.text.toString()) / 2.20462262185
-                    Toast.makeText(this, "Kilos: " + weightResult, Toast.LENGTH_SHORT).show()
+                    weightResult = Integer.parseInt(txtWeightInput.text.toString()) / 2.20462262185
+                    LsResult = "Kilos: " + weightResult.toString()
                 }
             }
+            txtResult.setText(LsResult)
 
+            val LoClipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val LoClipData : ClipData = ClipData.newPlainText("Weight Result", weightResult.toString())
+
+            LoClipboard.setPrimaryClip(LoClipData)
         })
     }
 }

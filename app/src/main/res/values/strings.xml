@@ -6,6 +6,6 @@
         <item>Kilos - Pounds</item>
         <item>Pounds - Kilos</item>
     </string-array>
-    <string name="kp">Kilo - Pound</string>
-    <string name="pk">Pound - Kilo</string>
+    <string name="kp">Kilo -> Pound</string>
+    <string name="pk">Pound -> Kilo</string>
 </resources>
