@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">weightConverter</string>
+    <string name="viewEnterWeight">Enter weight:</string>
+    <string name="btnConvert">Convert</string>
+    <string-array name="spnConvertions">
+        <item>Kilos - Pounds</item>
+        <item>Pounds - Kilos</item>
+    </string-array>
+    <string name="kp">Kilo - Pound</string>
+    <string name="pk">Pound - Kilo</string>
 </resources>
