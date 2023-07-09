@@ -14,6 +14,7 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,14 +42,25 @@ class MainActivity : AppCompatActivity() {
         var weightResult = 0.0
 
         btnConvert.setOnClickListener(View.OnClickListener {
+
+            //We validate that a number has been entered
+            if(txtWeightInput.text.toString()=="") {
+                Toast.makeText(this, "You have to enter a number!", Toast.LENGTH_LONG).show()
+                return@OnClickListener
+            }
+
             when(rdbConvertionGroup.checkedRadioButtonId){
                 R.id.kp -> {
-                    weightResult = Integer.parseInt(txtWeightInput.text.toString()) * 2.20462262185
+                    weightResult = txtWeightInput.text.toString().toFloat() * 2.20462262185
                     LsResult = "Pounds: " + weightResult.toString()
                 }
                 R.id.pk -> {
-                    weightResult = Integer.parseInt(txtWeightInput.text.toString()) / 2.20462262185
+                    weightResult = txtWeightInput.text.toString().toFloat() / 2.20462262185
                     LsResult = "Kilos: " + weightResult.toString()
+                }
+                else -> {
+                    Toast.makeText(this, "You have to select a convertion!", Toast.LENGTH_LONG).show()
+                    return@OnClickListener
                 }
             }
             txtResult.setText(LsResult)
