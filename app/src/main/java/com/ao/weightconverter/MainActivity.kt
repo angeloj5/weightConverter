@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                     LsResult = "Kilos: " + weightResult.toString()
                 }
                 else -> {
-                    Toast.makeText(this, "You have to select a convertion!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "You have to select a conversion!", Toast.LENGTH_LONG).show()
                     return@OnClickListener
                 }
             }
